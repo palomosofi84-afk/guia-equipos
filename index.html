@@ -108,7 +108,18 @@ body.grid .deck{width:min(1500px,100%)}
   background:var(--rosa-claro);color:var(--tinta);
 }
 .s-tag{position:absolute;top:2.6cqi;left:3cqi}
-.s-num{position:absolute;top:2.6cqi;right:3cqi;font-variant-numeric:tabular-nums}
+.s-corner{position:absolute;top:2.6cqi;right:3cqi;display:flex;align-items:center;gap:1cqi}
+.s-num{font-variant-numeric:tabular-nums}
+/* firma de la autora: sutil, pero con el punto rosa para que se note */
+.s-handle{
+  display:inline-flex;align-items:center;gap:.5em;
+  font-family:var(--display);font-weight:600;font-size:clamp(10px,1.05cqi,13px);letter-spacing:.02em;
+  color:var(--tinta);opacity:.72;text-decoration:none;transition:opacity .2s;
+}
+.s-handle::before{content:"";width:.55em;height:.55em;border-radius:50%;background:var(--naranja-fuerte)}
+.s-handle:hover{opacity:1}
+.dark .s-handle{color:var(--rosa);opacity:.9}
+.dark .s-handle::before{background:var(--naranja)}
 .s-foot{
   position:absolute;left:3cqi;right:3cqi;bottom:2.4cqi;
   display:flex;align-items:center;gap:1.4cqi;flex-wrap:wrap;
@@ -898,7 +909,7 @@ body.present .topbar{display:none}
     if(!s.id) s.id="hoja-"+(i+1);
     const deco=document.createElement("div"); deco.className="deco"; s.prepend(deco);
     s.insertAdjacentHTML("beforeend",
-      `<span class="pill s-tag">Construir equipos</span><span class="pill s-num">${pad(i+1)}</span>
+      `<span class="pill s-tag">Construir equipos</span><span class="s-corner"><a class="s-handle" href="https://www.instagram.com/sarapalomarm/" target="_blank" rel="noopener">@sarapalomarm</a><span class="pill s-num">${pad(i+1)}</span></span>
        <div class="s-foot"><span class="pill site">Guía práctica</span><span class="pill">${s.dataset.title}</span><span class="grow"></span>
        <span class="dots" aria-hidden="true"><span class="line"><i style="width:${Math.round((i+1)/total*100)}%"></i></span><b></b><b></b><b></b></span></div>`);
     s.setAttribute("aria-label",`Hoja ${i+1} de ${total}: ${s.dataset.title}`);
