@@ -120,6 +120,8 @@ body.grid .deck{width:min(1500px,100%)}
 .s-sign b{font-family:var(--display);font-weight:600;font-size:clamp(9px,.95cqi,12px);letter-spacing:.01em;opacity:.75}
 .s-sign span{font-family:var(--display);font-weight:700;font-size:clamp(10px,1.1cqi,14px);color:var(--naranja-fuerte)}
 .dark .s-sign span{color:var(--rosa)}
+.s-sign .ig{display:inline-flex;align-items:center;gap:.4em}
+.s-sign .ig img{width:1.35em;height:auto;display:block}
 .dots{display:flex;align-items:center;gap:.5cqi}
 .dots .line{width:5cqi;height:.55cqi;min-height:4px;border-radius:99px;background:currentColor;opacity:.25;overflow:hidden;position:relative}
 .dots .line i{position:absolute;inset:0;width:var(--p,0%);background:var(--naranja-fuerte);opacity:1}
@@ -905,7 +907,7 @@ body.present .topbar{display:none}
     s.insertAdjacentHTML("beforeend",
       `<span class="pill s-tag">Construir equipos</span><span class="pill s-num">${pad(i+1)}</span>
        <div class="s-foot"><span class="pill site">Guía práctica</span><span class="pill">${s.dataset.title}</span><span class="grow"></span>
-       <span class="s-sign"><b>Sara Palomar M | Inspira Fest 2026</b><span>@sarapalomarm</span></span>
+       <span class="s-sign"><b>Sara Palomar M | Inspira Fest 2026</b><span class="ig"><img src="instagram.png" alt="Instagram">@sarapalomarm</span></span>
        <span class="dots" aria-hidden="true"><span class="line"><i style="width:${Math.round((i+1)/total*100)}%"></i></span><b></b><b></b><b></b></span></div>`);
     s.setAttribute("aria-label",`Hoja ${i+1} de ${total}: ${s.dataset.title}`);
   });
