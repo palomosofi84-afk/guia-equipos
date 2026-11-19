@@ -108,24 +108,18 @@ body.grid .deck{width:min(1500px,100%)}
   background:var(--rosa-claro);color:var(--tinta);
 }
 .s-tag{position:absolute;top:2.6cqi;left:3cqi}
-.s-corner{position:absolute;top:2.6cqi;right:3cqi;display:flex;align-items:center;gap:1cqi}
-.s-num{font-variant-numeric:tabular-nums}
-/* firma de la autora: sutil, pero con el punto rosa para que se note */
-.s-handle{
-  display:inline-flex;align-items:center;gap:.5em;
-  font-family:var(--display);font-weight:600;font-size:clamp(10px,1.05cqi,13px);letter-spacing:.02em;
-  color:var(--tinta);opacity:.72;text-decoration:none;transition:opacity .2s;
-}
-.s-handle::before{content:"";width:.55em;height:.55em;border-radius:50%;background:var(--naranja-fuerte)}
-.s-handle:hover{opacity:1}
-.dark .s-handle{color:var(--rosa);opacity:.9}
-.dark .s-handle::before{background:var(--naranja)}
+.s-num{position:absolute;top:2.6cqi;right:3cqi;font-variant-numeric:tabular-nums}
 .s-foot{
   position:absolute;left:3cqi;right:3cqi;bottom:2.4cqi;
   display:flex;align-items:center;gap:1.4cqi;flex-wrap:wrap;
 }
 .s-foot .pill{text-transform:none;letter-spacing:.01em}
 .s-foot .grow{flex:1}
+/* firma de la autora en cada hoja */
+.s-sign{display:flex;flex-direction:column;align-items:flex-end;line-height:1.2;text-align:right}
+.s-sign b{font-family:var(--display);font-weight:600;font-size:clamp(9px,.95cqi,12px);letter-spacing:.01em;opacity:.75}
+.s-sign span{font-family:var(--display);font-weight:700;font-size:clamp(10px,1.1cqi,14px);color:var(--naranja-fuerte)}
+.dark .s-sign span{color:var(--rosa)}
 .dots{display:flex;align-items:center;gap:.5cqi}
 .dots .line{width:5cqi;height:.55cqi;min-height:4px;border-radius:99px;background:currentColor;opacity:.25;overflow:hidden;position:relative}
 .dots .line i{position:absolute;inset:0;width:var(--p,0%);background:var(--naranja-fuerte);opacity:1}
@@ -909,8 +903,9 @@ body.present .topbar{display:none}
     if(!s.id) s.id="hoja-"+(i+1);
     const deco=document.createElement("div"); deco.className="deco"; s.prepend(deco);
     s.insertAdjacentHTML("beforeend",
-      `<span class="pill s-tag">Construir equipos</span><span class="s-corner"><a class="s-handle" href="https://www.instagram.com/sarapalomarm/" target="_blank" rel="noopener">@sarapalomarm</a><span class="pill s-num">${pad(i+1)}</span></span>
+      `<span class="pill s-tag">Construir equipos</span><span class="pill s-num">${pad(i+1)}</span>
        <div class="s-foot"><span class="pill site">Guía práctica</span><span class="pill">${s.dataset.title}</span><span class="grow"></span>
+       <span class="s-sign"><b>Sara Palomar M | Inspira Fest 2026</b><span>@sarapalomarm</span></span>
        <span class="dots" aria-hidden="true"><span class="line"><i style="width:${Math.round((i+1)/total*100)}%"></i></span><b></b><b></b><b></b></span></div>`);
     s.setAttribute("aria-label",`Hoja ${i+1} de ${total}: ${s.dataset.title}`);
   });
